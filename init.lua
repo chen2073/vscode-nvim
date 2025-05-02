@@ -87,11 +87,10 @@ require("lazy").setup({
             ---@type Flash.Config
             opts = {},
             keys = {
-                { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-                { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-                { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-                { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-                { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+                { "<leader>fs", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+                { "<leader>fS", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+                { "<leader>fr", mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+                { "<leader>fR", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
             },
         },
         {
@@ -138,6 +137,26 @@ require("lazy").setup({
                 vim.keymap.set({ 'n' }, ']mc', cursors.next_cursor, { desc = 'Goto next cursor' })
                 vim.keymap.set({ 'n' }, 'mcs', cursors.flash_char, { desc = 'Create cursor using flash' })
                 vim.keymap.set({ 'n' }, 'mcw', cursors.flash_word, { desc = 'Create selection using flash' })
+            end
+        },
+        {
+            'echasnovski/mini.surround',
+            version = '*',
+            config = function()
+                require('mini.surround').setup({
+                    mappings = {
+                        add = '<leader>sa',        -- Add surrounding in Normal and Visual modes
+                        delete = '<leader>sd',     -- Delete surrounding
+                        find = '<leader>sf',       -- Find surrounding (to the right)
+                        find_left = '<leader>sF',  -- Find surrounding (to the left)
+                        highlight = '<leader>sh',  -- Highlight surrounding
+                        replace = '<leader>sr',    -- Replace surrounding
+                        update_n_lines = '<leader>sn', -- Update `n_lines`
+
+                        suffix_last = '<leader>l', -- Suffix to search with "prev" method
+                        suffix_next = '<leader>n', -- Suffix to search with "next" method
+                    },
+                })
             end
         },
     },
