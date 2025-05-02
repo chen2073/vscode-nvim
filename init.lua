@@ -7,24 +7,40 @@ vim.g.maplocalleader = "\\"
 local vscode = require('vscode')
 
 vim.keymap.set("n", "<C-z>", "<cmd>undo<cr>", { desc = "undo in normal mode"})
-vim.keymap.set("n", "<leader>w", "a<space><esc>", { desc = "insert a whitespace after" })
-vim.keymap.set("n", "<leader>ol", "o<esc>", { desc = "insert a empty line below"})
-vim.keymap.set("n", "<leader>Ol", "O<esc>", { desc = "insert a empty line above"})
+-- vim.keymap.set("n", "<C-r>", "<cmd>redo<cr>", { desc = "redo in normal mode"})
+vim.keymap.set("n", "<leader>s", "a<space><esc>", { desc = "append a whitespace" })
+vim.keymap.set("n", "<leader>S", "i<space><esc>", { desc = "insert a whitespace" })
+vim.keymap.set("n", "<leader>o", "o<esc>", { desc = "insert a empty line below current line"})
+vim.keymap.set("n", "<leader>O", "O<esc>", { desc = "insert a empty line above current line"})
 vim.keymap.set({ "n", "v" }, "bh", '"_', { desc = "backhole register" })
 
-vim.keymap.set("n", "<C-f>", function() vscode.action("editor.find") end, { desc = "show search bar in normal mode" })
+vim.keymap.set("n", "<C-f>", function()
+    vscode.action("editor.action.startFindReplaceAction")
+    end, { desc = "quick replace in editor" })
 
 vim.keymap.set("n", "<leader>gaw", function()
     vscode.action("workbench.action.findInFiles", {
       args = { query = vim.fn.expand('<cword>') }
     })
-end, { desc = "grep word in project scope"})
+end, { desc = "quick find current word in workbench"})
+
+vim.keymap.set("n", "<leader>gw", function()
+    vscode.action("workbench.action.find")
+end, { desc = "quick find in workbench"})
 
 vim.keymap.set("v", "<leader>gas", function()
+    local start_pos = vim.fn.getpos('v')
+    local end_pos = vim.fn.getpos('.')
+
+    local start_line = start_pos[2] - 1
+    local start_character = start_pos[3] - 1
+    local end_line = end_pos[2] - 1
+    local end_character = end_pos[3] - 1
+    -- range are zero-indexed where lua is 1-indexed
     vscode.action("workbench.action.findInFiles", {
-      args = { query = vim.fn.expand('<cword>') }
+        range = {start_line, start_character, end_line, end_character}
     })
-end, { desc = "grep word in project scope"})
+end, { desc = "grep current visual selection in workbench"})
 
 vim.keymap.set("i", "<C-s>", "<cmd>w<cr><esc>", { desc = "save file and back to normal mode" })
 
