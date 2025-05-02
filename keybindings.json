@@ -1,5 +1,5 @@
 // Place your key bindings in this file to override the defaults
-// /home/jchen/.config/Code/User/profiles/-5c5b1aa7/keybindings.json
+// ls -s ~/.config/Code/User/profiles/<profile_id>/keybindings.json ./keybindings.json
 [
     {
         "command": "vscode-neovim.send",
@@ -12,5 +12,11 @@
         "key": "ctrl+f",
         "when": "editorTextFocus && neovim.mode == normal",
         "args": "<C-f>"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+q",
+        "when": "editorTextFocus",
+        "args": "<C-q>"
     }
 ]

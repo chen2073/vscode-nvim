@@ -59,6 +59,9 @@ vim.keymap.set("v", "<leader>fm", function()
 end, { desc = "format selection" })
 
 vim.keymap.set("i", "<C-s>", "<cmd>w<cr><esc>", { desc = "save file and back to normal mode" })
+vim.keymap.set("i", "<C-q>", function()
+    vim.cmd("stopinsert")
+end, { desc = "back to normal mode from insert mode" })
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
