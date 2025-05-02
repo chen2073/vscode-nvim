@@ -87,10 +87,10 @@ require("lazy").setup({
             ---@type Flash.Config
             opts = {},
             keys = {
-                { "<leader>fs", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-                { "<leader>fS", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-                { "<leader>fr", mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-                { "<leader>fR", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+                { "<leader>fs",  mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+                { "<leader>ft",  mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+                { "<leader>fr",  mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+                { "<leader>fts", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
             },
         },
         {
@@ -145,16 +145,16 @@ require("lazy").setup({
             config = function()
                 require('mini.surround').setup({
                     mappings = {
-                        add = '<leader>sa',        -- Add surrounding in Normal and Visual modes
-                        delete = '<leader>sd',     -- Delete surrounding
-                        find = '<leader>sf',       -- Find surrounding (to the right)
-                        find_left = '<leader>sF',  -- Find surrounding (to the left)
-                        highlight = '<leader>sh',  -- Highlight surrounding
-                        replace = '<leader>sr',    -- Replace surrounding
+                        add = '<leader>sa',            -- Add surrounding in Normal and Visual modes
+                        delete = '<leader>sd',         -- Delete surrounding
+                        find = '<leader>sf',           -- Find surrounding (to the right)
+                        find_left = '<leader>sF',      -- Find surrounding (to the left)
+                        highlight = '<leader>sh',      -- Highlight surrounding
+                        replace = '<leader>sr',        -- Replace surrounding
                         update_n_lines = '<leader>sn', -- Update `n_lines`
 
-                        suffix_last = '<leader>l', -- Suffix to search with "prev" method
-                        suffix_next = '<leader>n', -- Suffix to search with "next" method
+                        suffix_last = '<leader>l',     -- Suffix to search with "prev" method
+                        suffix_next = '<leader>n',     -- Suffix to search with "next" method
                     },
                 })
             end
