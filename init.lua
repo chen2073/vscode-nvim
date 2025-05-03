@@ -8,8 +8,8 @@ local vscode = require('vscode')
 
 vim.keymap.set("n", "<C-z>", "<cmd>undo<cr>", { desc = "undo in normal mode" })
 -- vim.keymap.set("n", "<C-r>", "<cmd>redo<cr>", { desc = "redo in normal mode"})
-vim.keymap.set("n", "<leader>s", "a<space><esc>", { desc = "append a whitespace" })
-vim.keymap.set("n", "<leader>S", "i<space><esc>", { desc = "insert a whitespace" })
+vim.keymap.set("n", "<leader>a", "a<space><esc>", { desc = "append a whitespace" })
+vim.keymap.set("n", "<leader>i", "i<space><esc>", { desc = "insert a whitespace" })
 vim.keymap.set("n", "<leader>o", "o<esc>", { desc = "insert a empty line below current line" })
 vim.keymap.set("n", "<leader>O", "O<esc>", { desc = "insert a empty line above current line" })
 vim.keymap.set({ "n", "v" }, "bh", '"_', { desc = "backhole register" })
@@ -63,6 +63,20 @@ vim.keymap.set("i", "<C-q>", function()
     vim.cmd("stopinsert")
 end, { desc = "back to normal mode from insert mode" })
 
+vim.api.nvim_create_autocmd("InsertEnter", {
+    callback = function()
+        -- vscode.action("errorLens.toggle")
+        vscode.update_config("errorLens.enabled", false, "global")
+    end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+    callback = function()
+        -- vscode.action("errorLens.toggle")
+        vscode.update_config("errorLens.enabled", true, "global")
+    end,
+})
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -84,14 +98,19 @@ require("lazy").setup({
         {
             "folke/flash.nvim",
             event = "VeryLazy",
-            ---@type Flash.Config
             opts = {},
             keys = {
-                { "<leader>fs",  mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-                { "<leader>ft",  mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-                { "<leader>fr",  mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-                { "<leader>fts", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+                { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+                { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+                { "r", mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+                { "R", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
             },
+            -- config = function()
+            --     local flash = require("flash").setup()
+            --     vim.keymap.set({ 'n', 'x', 'o' }, 'f', function()
+            --         flash.jump()
+            --     end, { desc = "Flash", noremap = true })
+            -- end
         },
         {
             "nvim-treesitter/nvim-treesitter",
@@ -153,8 +172,8 @@ require("lazy").setup({
                         replace = '<leader>sr',        -- Replace surrounding
                         update_n_lines = '<leader>sn', -- Update `n_lines`
 
-                        suffix_last = '<leader>l',     -- Suffix to search with "prev" method
-                        suffix_next = '<leader>n',     -- Suffix to search with "next" method
+                        suffix_last = '[',             -- Suffix to search with "prev" method
+                        suffix_next = ']',             -- Suffix to search with "next" method
                     },
                 })
             end
