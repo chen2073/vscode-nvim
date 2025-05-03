@@ -1,5 +1,6 @@
 {
     "remote.extensionKind": {
         "asvetliakov.vscode-neovim": ["workspace"]
-    }
+    },
+    "Lua.diagnostics.globals": ["vim"]
 }
