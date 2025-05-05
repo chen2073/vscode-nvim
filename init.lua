@@ -146,38 +146,40 @@ require("lazy").setup({
                     no_selection = false
                 }
 
-                vim.keymap.set({ 'n', 'x' }, 'mc', cursors.create_cursor, { expr = true, desc = 'Create cursor' })
-                vim.keymap.set({ 'n' }, 'mcc', cursors.cancel, { desc = 'Cancel/Clear all cursors' })
-                vim.keymap.set({ 'n', 'x' }, 'mi', cursors.start_left, { desc = 'Start cursors on the left' })
-                vim.keymap.set({ 'n', 'x' }, 'mI', cursors.start_left_edge, { desc = 'Start cursors on the left edge' })
-                vim.keymap.set({ 'n', 'x' }, 'ma', cursors.start_right, { desc = 'Start cursors on the right' })
-                vim.keymap.set({ 'n', 'x' }, 'mA', cursors.start_right, { desc = 'Start cursors on the right' })
-                vim.keymap.set({ 'n' }, '[mc', cursors.prev_cursor, { desc = 'Goto prev cursor' })
-                vim.keymap.set({ 'n' }, ']mc', cursors.next_cursor, { desc = 'Goto next cursor' })
-                vim.keymap.set({ 'n' }, 'mcs', cursors.flash_char, { desc = 'Create cursor using flash' })
-                vim.keymap.set({ 'n' }, 'mcw', cursors.flash_word, { desc = 'Create selection using flash' })
+                vim.keymap.set({ "n", "x" }, "mc", cursors.create_cursor, { expr = true, desc = "Create cursor" })
+                vim.keymap.set({ "n" }, "mcc", cursors.cancel, { desc = "Cancel/Clear all cursors" })
+                vim.keymap.set({ "n", "x" }, "mi", cursors.start_left, { desc = "Start cursors on the left" })
+                vim.keymap.set({ "n", "x" }, "mI", cursors.start_left_edge, { desc = "Start cursors on the left edge" })
+                vim.keymap.set({ "n", "x" }, "ma", cursors.start_right, { desc = "Start cursors on the right" })
+                vim.keymap.set({ "n", "x" }, "mA", cursors.start_right, { desc = "Start cursors on the right" })
+                vim.keymap.set({ "n" }, "[mc", cursors.prev_cursor, { desc = "Goto prev cursor" })
+                vim.keymap.set({ "n" }, "]mc", cursors.next_cursor, { desc = "Goto next cursor" })
+                vim.keymap.set({ "n" }, "mcs", cursors.flash_char, { desc = "Create cursor using flash" })
+                vim.keymap.set({ "n" }, "mcw", cursors.flash_word, { desc = "Create selection using flash" })
             end
         },
         {
-            'echasnovski/mini.surround',
-            version = '*',
+            "kylechui/nvim-surround",
+            version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
+            event = "VeryLazy",
             config = function()
-                require('mini.surround').setup({
-                    mappings = {
-                        add = '<leader>sa',            -- Add surrounding in Normal and Visual modes
-                        delete = '<leader>sd',         -- Delete surrounding
-                        find = '<leader>sf',           -- Find surrounding (to the right)
-                        find_left = '<leader>sF',      -- Find surrounding (to the left)
-                        highlight = '<leader>sh',      -- Highlight surrounding
-                        replace = '<leader>sr',        -- Replace surrounding
-                        update_n_lines = '<leader>sn', -- Update `n_lines`
-
-                        suffix_last = '[',             -- Suffix to search with "prev" method
-                        suffix_next = ']',             -- Suffix to search with "next" method
+                require("nvim-surround").setup({
+                    keymaps = {
+                        insert = "<C-g>s",
+                        insert_line = "<C-g>S",
+                        normal = "<leader>sy",
+                        normal_cur = "<leader>ssy",
+                        normal_line = "<leader>Sy",
+                        normal_cur_line = "<leader>SSy",
+                        visual = "<leader>S",
+                        visual_line = "<leader>Sg",
+                        delete = "<leader>sd",
+                        change = "<leader>sc",
+                        change_line = "<leader>Sc",
                     },
                 })
             end
-        },
+        }
     },
     checker = { enabled = true },
 })
