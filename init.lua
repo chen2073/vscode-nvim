@@ -107,9 +107,6 @@ require("lazy").setup({
     --   },
     --   config = function()
     --     local flash = require("flash").setup()
-    --     vim.keymap.set({ 'n', 'x', 'o' }, 'f', function()
-    --       flash.jump()
-    --     end, { desc = "Flash", noremap = true })
     --   end
     -- },
     {
@@ -164,19 +161,7 @@ require("lazy").setup({
       event = "VeryLazy",
       config = function()
         require("nvim-surround").setup({
-          keymaps = {
-            insert = "<C-g>s",
-            insert_line = "<C-g>S",
-            normal = "<leader>sy",
-            normal_cur = "<leader>ssy",
-            normal_line = "<leader>Sy",
-            normal_cur_line = "<leader>SSy",
-            visual = "<leader>S",
-            visual_line = "<leader>Sg",
-            delete = "<leader>sd",
-            change = "<leader>sc",
-            change_line = "<leader>Sc",
-          },
+
         })
       end
     }
