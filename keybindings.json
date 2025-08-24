@@ -26,5 +26,12 @@
   {
     "key": "f4",
     "command": "vscode-neovim.restart"
+  },
+  // yank to system clipboard
+  {
+    "command": "vscode-neovim.send",
+    "key": "f5",
+    "when": "editorTextFocus && neovim.mode == insert",
+    "args": "\"+y"
   }
 ]
