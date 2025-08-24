@@ -2,5 +2,7 @@
     "remote.extensionKind": {
         "asvetliakov.vscode-neovim": ["workspace"]
     },
-    "Lua.diagnostics.globals": ["vim"]
+    "Lua.diagnostics.globals": ["vim"],
+    "vscode-neovim.neovimInitVimPaths.darwin": "~/vscode-nvim/init.lua",
+    "vscode-neovim.neovimInitVimPaths.linux": "~/vscode-nvim/init.lua"
 }
