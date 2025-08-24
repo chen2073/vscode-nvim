@@ -1,18 +1,10 @@
--- vim.g.clipboard = vim.g.vscode_clipboard
--- vim.cmd("set clipboard=unnamedplus")
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 local vscode = require('vscode')
 
--- vim.keymap.set("n", "<C-z>", "<cmd>undo<cr>", { desc = "undo in normal mode" })
--- vim.keymap.set("n", "<C-r>", "<cmd>redo<cr>", { desc = "redo in normal mode"})
--- vim.keymap.set("n", "<leader>a", "a<space><esc>", { desc = "append a whitespace" })
--- vim.keymap.set("n", "<leader>i", "i<space><esc>", { desc = "insert a whitespace" })
--- vim.keymap.set("n", "<leader>o", "o<esc>", { desc = "insert a empty line below current line" })
--- vim.keymap.set("n", "<leader>O", "O<esc>", { desc = "insert a empty line above current line" })
--- vim.keymap.set({ "n", "v" }, "bh", '"_', { desc = "backhole register" })
+-- vim.g.clipboard = vim.g.vscode_clipboard
+-- vim.cmd("set clipboard=unnamedplus")
 
 -- vim.keymap.set("n", "<C-f>", function()
 --   vscode.action("editor.action.startFindReplaceAction")
@@ -28,13 +20,13 @@ local vscode = require('vscode')
 --   vscode.action("workbench.action.find")
 -- end, { desc = "quick find in workbench" })
 
--- vim.keymap.set("n", "<leader>tw", function()
---   vscode.action("editor.action.trimTrailingWhitespace")
--- end, { desc = "trim trailing whitespace" })
+vim.keymap.set("n", "<leader>tw", function()
+  vscode.action("editor.action.trimTrailingWhitespace")
+end, { desc = "trim trailing whitespace" })
 
--- vim.keymap.set("n", "<leader>fm", function()
---   vscode.action("editor.action.formatDocument")
--- end, { desc = "format entire file" })
+vim.keymap.set("n", "<leader>fm", function()
+  vscode.action("editor.action.formatDocument")
+end, { desc = "format document" })
 
 -- vim.keymap.set("v", "<leader>gas", function()
 --   local start_pos = vim.fn.getpos('v')
@@ -50,18 +42,13 @@ local vscode = require('vscode')
 --   })
 -- end, { desc = "grep current visual selection in workbench" })
 
--- vim.keymap.set("v", "<leader>fm", function()
---   local start_line = vim.fn.line("v") - 1
---   local end_line = vim.fn.line(".") - 1
---   vscode.action("editor.action.formatSelection", {
---     range = { start_line, end_line }
---   })
--- end, { desc = "format selection" })
-
--- vim.keymap.set("i", "<C-s>", "<cmd>w<cr><esc>", { desc = "save file and back to normal mode" })
--- vim.keymap.set("i", "<C-q>", function()
---   vim.cmd("stopinsert")
--- end, { desc = "back to normal mode from insert mode" })
+vim.keymap.set("v", "<leader>fm", function()
+  local start_line = vim.fn.line("v") - 1
+  local end_line = vim.fn.line(".") - 1
+  vscode.action("editor.action.formatSelection", {
+    range = { start_line, end_line }
+  })
+end, { desc = "format visual selection" })
 
 vim.api.nvim_create_autocmd("InsertEnter", {
   callback = function()
@@ -72,7 +59,6 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 
 vim.api.nvim_create_autocmd("InsertLeave", {
   callback = function()
-    -- vscode.action("errorLens.toggle")
     vscode.update_config("errorLens.enabled", true, "global")
   end,
 })
