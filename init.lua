@@ -96,13 +96,7 @@ require("lazy").setup({
             config = function()
                 local flash = require("flash")
                 flash.setup()
-
-                vim.api.nvim_create_user_command("ToggleFlash", function()
-                    flash.toggle()
-                    print("flash toggled")
-                end, {
-                    desc = "Toggle flash.nvim plugin on/off"
-                })
+                vim.api.nvim_create_user_command("ToggleFlash", function() flash.toggle() print("flash toggled") end, { desc = "Toggle flash on/off" })
             end
         },
         {
