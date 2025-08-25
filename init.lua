@@ -6,9 +6,9 @@ local vscode = require("vscode")
 -- vim.g.clipboard = vim.g.vscode_clipboard
 -- vim.cmd("set clipboard=unnamedplus")
 
--- vim.keymap.set("n", "<C-f>", function()
---   vscode.action("editor.action.startFindReplaceAction")
--- end, { desc = "quick replace in editor" })
+vim.keymap.set({ "n", "i", "v" }, "<C-f>", function()
+  vscode.action("editor.action.startFindReplaceAction")
+end, { desc = "quick replace in editor" })
 
 -- vim.keymap.set("n", "<leader>gaw", function()
 --   vscode.action("workbench.action.findInFiles", {
