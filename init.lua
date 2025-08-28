@@ -3,8 +3,7 @@ vim.g.maplocalleader = "\\"
 
 local vscode = require("vscode")
 
--- vim.g.clipboard = vim.g.vscode_clipboard
--- vim.cmd("set clipboard=unnamedplus")
+vim.g.clipboard = vim.g.vscode_clipboard
 
 vim.keymap.set({ "n", "i", "v" }, "<C-f>", function()
   vscode.action("editor.action.startFindReplaceAction")
