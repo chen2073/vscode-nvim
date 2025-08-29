@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "asvetliakov.vscode-neovim",
     "usernamehw.errorlens",
     "sumneko.lua"
   ]
