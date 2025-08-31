@@ -5,6 +5,24 @@ local vscode = require("vscode")
 
 vim.g.clipboard = vim.g.vscode_clipboard
 
+-- Save original x behavior to another key
+vim.keymap.set('n', '<leader>x', 'x', { desc = 'Original x (delete char)' })
+
+-- Replace x with black hole delete
+vim.keymap.set('n', 'x', '"_d', { desc = 'Delete to black hole register' })
+vim.keymap.set('v', 'x', '"_d', { desc = 'Delete selection to black hole register' })
+vim.keymap.set('n', 'xx', '"_dd', { desc = 'Delete line to black hole register' })
+
+function CopyToStar()
+  local content = vim.fn.getreg('"')
+  local regtype = vim.fn.getregtype('"')
+  vim.fn.setreg('*', content, regtype)
+  print("Copied to system clipboard")
+end
+
+vim.keymap.set('n', '<leader>2s', CopyToStar, { desc = 'Copy unnamed register to system clipboard' })
+vim.api.nvim_create_user_command("Copy2Star", CopyToStar, { desc = "Copy unnamed register to system clipboard" })
+
 vim.keymap.set({ "n", "i", "v" }, "<C-f>", function()
     vscode.action("editor.action.startFindReplaceAction")
 end, { desc = "quick replace in editor" })

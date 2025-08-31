@@ -2,4 +2,3 @@
 
 ## to-add plugins
 vim-repeat
-yanky.nvim
