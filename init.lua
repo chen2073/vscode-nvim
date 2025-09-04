@@ -32,7 +32,7 @@ end, { desc = "quick replace in editor" })
 
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<Esc>:w<CR>", { desc = "Save and exit to normal mode" })
 
-vim.keymap.set("n", "<leader>tw", function()
+vim.keymap.set("n", "<leader>t", function()
     vscode.action("editor.action.trimTrailingWhitespace")
 end, { desc = "trim trailing whitespace" })
 
