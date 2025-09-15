@@ -16,9 +16,9 @@ vim.keymap.set('n', '<leader>m', function()
   print("Copied to system clipboard")
 end, { desc = 'Copy unnamed register to system clipboard' })
 
-vim.keymap.set({ "n", "i", "v" }, "<C-f>", function()
-    vscode.action("editor.action.startFindReplaceAction")
-end, { desc = "quick replace in editor" })
+-- vim.keymap.set({ "n", "i", "v" }, "<C-f>", function()
+--     vscode.action("editor.action.startFindReplaceAction")
+-- end, { desc = "quick replace in editor" })
 
 -- vim.keymap.set("n", "<leader>gaw", function()
 --   vscode.action("workbench.action.findInFiles", {
