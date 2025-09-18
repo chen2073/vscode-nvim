@@ -10,10 +10,10 @@ vim.g.clipboard = vim.g.vscode_clipboard
 -- vim.keymap.set('n', 'XX', '"_dd', { desc = 'Delete line to black hole register' })
 
 vim.keymap.set('n', '<leader>m', function()
-  local content = vim.fn.getreg('"')
-  local regtype = vim.fn.getregtype('"')
-  vim.fn.setreg('*', content, regtype)
-  print("Copied to system clipboard")
+    local content = vim.fn.getreg('"')
+    local regtype = vim.fn.getregtype('"')
+    vim.fn.setreg('*', content, regtype)
+    print("Copied to system clipboard")
 end, { desc = 'Copy unnamed register to system clipboard' })
 
 -- vim.keymap.set({ "n", "i", "v" }, "<C-f>", function()
@@ -251,45 +251,35 @@ require("lazy").setup({
             version = "^3.0.0",
             event = "VeryLazy",
             config = function()
-                require("nvim-surround").setup({
-                    --               Old text                    Command         New text
-                    -- --------------------------------------------------------------------------------
-                    --     surr*ound_words             ysiw)           (surround_words)
-                    --     *make strings               ys$"            "make strings"
-                    --     [delete ar*ound me!]        ds]             delete around me!
-                    --     remove <b>HTML t*ags</b>    dst             remove HTML tags
-                    --     "change quot*es"            cs""            "change quotes"
-                    --     <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
-                    --     delete(functi*on calls)     dsf             function calls
-                })
+                require("nvim-surround").setup({})
             end
         },
-        {
-            "gbprod/yanky.nvim",
-            opts = {
-                ring = { storage = "memory" },
-            },
-            keys = {
-                { "<leader>p", "<cmd>YankyRingHistory<cr>",              mode = { "n", "x" },                                desc = "Open Yank History" },
-                { "y",         "<Plug>(YankyYank)",                      mode = { "n", "x" },                                desc = "Yank text" },
-                { "p",         "<Plug>(YankyPutAfter)",                  mode = { "n", "x" },                                desc = "Put yanked text after cursor" },
-                { "P",         "<Plug>(YankyPutBefore)",                 mode = { "n", "x" },                                desc = "Put yanked text before cursor" },
-                { "gp",        "<Plug>(YankyGPutAfter)",                 mode = { "n", "x" },                                desc = "Put yanked text after selection" },
-                { "gP",        "<Plug>(YankyGPutBefore)",                mode = { "n", "x" },                                desc = "Put yanked text before selection" },
-                { "<c-p>",     "<Plug>(YankyPreviousEntry)",             desc = "Select previous entry through yank history" },
-                { "<c-n>",     "<Plug>(YankyNextEntry)",                 desc = "Select next entry through yank history" },
-                { "]p",        "<Plug>(YankyPutIndentAfterLinewise)",    desc = "Put indented after cursor (linewise)" },
-                { "[p",        "<Plug>(YankyPutIndentBeforeLinewise)",   desc = "Put indented before cursor (linewise)" },
-                { "]P",        "<Plug>(YankyPutIndentAfterLinewise)",    desc = "Put indented after cursor (linewise)" },
-                { "[P",        "<Plug>(YankyPutIndentBeforeLinewise)",   desc = "Put indented before cursor (linewise)" },
-                { ">p",        "<Plug>(YankyPutIndentAfterShiftRight)",  desc = "Put and indent right" },
-                { "<p",        "<Plug>(YankyPutIndentAfterShiftLeft)",   desc = "Put and indent left" },
-                { ">P",        "<Plug>(YankyPutIndentBeforeShiftRight)", desc = "Put before and indent right" },
-                { "<P",        "<Plug>(YankyPutIndentBeforeShiftLeft)",  desc = "Put before and indent left" },
-                { "=p",        "<Plug>(YankyPutAfterFilter)",            desc = "Put after applying a filter" },
-                { "=P",        "<Plug>(YankyPutBeforeFilter)",           desc = "Put before applying a filter" },
-            },
-        }
+        -- {
+        --     "gbprod/yanky.nvim",
+        --     opts = {
+        --         ring = { storage = "memory" },
+        --     },
+        --     keys = {
+        --         { "<leader>p", "<cmd>YankyRingHistory<cr>",              mode = { "n", "x" },                                desc = "Open Yank History" },
+        --         { "y",         "<Plug>(YankyYank)",                      mode = { "n", "x" },                                desc = "Yank text" },
+        --         { "p",         "<Plug>(YankyPutAfter)",                  mode = { "n", "x" },                                desc = "Put yanked text after cursor" },
+        --         { "P",         "<Plug>(YankyPutBefore)",                 mode = { "n", "x" },                                desc = "Put yanked text before cursor" },
+        --         { "gp",        "<Plug>(YankyGPutAfter)",                 mode = { "n", "x" },                                desc = "Put yanked text after selection" },
+        --         { "gP",        "<Plug>(YankyGPutBefore)",                mode = { "n", "x" },                                desc = "Put yanked text before selection" },
+        --         { "<c-p>",     "<Plug>(YankyPreviousEntry)",             desc = "Select previous entry through yank history" },
+        --         { "<c-n>",     "<Plug>(YankyNextEntry)",                 desc = "Select next entry through yank history" },
+        --         { "]p",        "<Plug>(YankyPutIndentAfterLinewise)",    desc = "Put indented after cursor (linewise)" },
+        --         { "[p",        "<Plug>(YankyPutIndentBeforeLinewise)",   desc = "Put indented before cursor (linewise)" },
+        --         { "]P",        "<Plug>(YankyPutIndentAfterLinewise)",    desc = "Put indented after cursor (linewise)" },
+        --         { "[P",        "<Plug>(YankyPutIndentBeforeLinewise)",   desc = "Put indented before cursor (linewise)" },
+        --         { ">p",        "<Plug>(YankyPutIndentAfterShiftRight)",  desc = "Put and indent right" },
+        --         { "<p",        "<Plug>(YankyPutIndentAfterShiftLeft)",   desc = "Put and indent left" },
+        --         { ">P",        "<Plug>(YankyPutIndentBeforeShiftRight)", desc = "Put before and indent right" },
+        --         { "<P",        "<Plug>(YankyPutIndentBeforeShiftLeft)",  desc = "Put before and indent left" },
+        --         { "=p",        "<Plug>(YankyPutAfterFilter)",            desc = "Put after applying a filter" },
+        --         { "=P",        "<Plug>(YankyPutBeforeFilter)",           desc = "Put before applying a filter" },
+        --     },
+        -- }
     },
     checker = { enabled = true },
 })
