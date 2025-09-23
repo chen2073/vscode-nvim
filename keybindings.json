@@ -69,5 +69,25 @@
         "key": "ctrl+f",
         "command": "-editor.action.pageDownHover",
         "when": "editorHoverFocused"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.a && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert.a && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.x && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert.x && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
     }
 ]
