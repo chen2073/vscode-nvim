@@ -2,6 +2,7 @@
   "recommendations": [
     "asvetliakov.vscode-neovim",
     "usernamehw.errorlens",
-    "sumneko.lua"
+    "sumneko.lua",
+    "shardulm94.trailing-spaces"
   ]
 }
