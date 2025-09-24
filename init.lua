@@ -34,10 +34,12 @@ vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<Esc>:w<CR>", { desc = "Save and exi
 
 vim.keymap.set("n", "<leader>t", function()
     vscode.action("editor.action.trimTrailingWhitespace")
+    print("Trimmed trailing whitespace")
 end, { desc = "trim trailing whitespace" })
 
 vim.keymap.set("n", "<leader>fm", function()
     vscode.action("editor.action.formatDocument")
+    print("Formatted document")
 end, { desc = "format document" })
 
 vim.keymap.set("v", "<leader>fm", function()
@@ -46,6 +48,7 @@ vim.keymap.set("v", "<leader>fm", function()
     vscode.action("editor.action.formatSelection", {
         range = { start_line, end_line }
     })
+    print("Formated visual selection")
 end, { desc = "format visual selection" })
 
 -- vim.keymap.set("v", "<leader>gas", function()
