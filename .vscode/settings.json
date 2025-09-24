@@ -2,7 +2,7 @@
     "Lua.diagnostics.globals": [
         "vim"
     ],
-    "vscode-neovim.neovimExecutablePaths.linux": "nvim",
+    "vscode-neovim.neovimExecutablePaths.linux": "/snap/bin/nvim",
     "vscode-neovim.neovimInitVimPaths.darwin": "~/vscode-nvim/init.lua",
     "vscode-neovim.neovimInitVimPaths.linux": "~/vscode-nvim/init.lua",
     "editor.fontFamily": "JetBrainsMono Nerd Font",
