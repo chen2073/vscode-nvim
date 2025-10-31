@@ -3,8 +3,8 @@
         "vim"
     ],
     "vscode-neovim.neovimExecutablePaths.linux": "/snap/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.darwin": "~/vscode-nvim/init.lua",
-    "vscode-neovim.neovimInitVimPaths.linux": "~/vscode-nvim/init.lua",
+    // "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/init.lua",
+    // "vscode-neovim.neovimInitVimPaths.linux": "~/vscode-nvim/init.lua",
     "vscode-neovim.useWSL": true,
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontLigatures": false,
