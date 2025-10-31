@@ -1,4 +1,3 @@
 # vscode neovim plugin configuration
 
-## to-add plugins
-vim-repeat
+vscode configuration for nvim vscode plugin. nvim config is in the nvim repo
